@@ -1,10 +1,10 @@
 from application import app, db
 #from application.models import Tasks
 #from application.forms import TaskForm
-#from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for
 
 @app.route("/")
-def home():   return "Hello World"
+def home():  return render_template('base.html')
     #all_tasks = Tasks.query.all()
    # output = ""
  
