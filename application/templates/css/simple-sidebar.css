@@ -7,6 +7,9 @@
  #wrapper {
     overflow-x: hidden;
  }
+ #body {
+  font-family: 'Courier New', monospace;
+ }
 
 #sidebar-wrapper {
   min-height: 100vh;
