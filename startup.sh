@@ -27,5 +27,5 @@ pip3 install -r requirements.txt
 sudo mkdir /opt/cggpp
 sudo chown -R jenkins /opt/cggpp
 sudo systemctl daemon-reload
-sudo systemctl stop app.service
-sudo systemctl start app.service
+sudo systemctl stop cggpp.service
+sudo systemctl start cggpp.service
