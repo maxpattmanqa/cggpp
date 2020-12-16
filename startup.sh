@@ -22,6 +22,10 @@
 sudo apt update
 sudo apt-get install python3-venv
 python3 -m venv venv
+cd $WORKSPACE
+ls -lah
+sudo cp -r $WORKSPACE /opt/jenkins
+sudo chown -R jenkins /opt/jenkins
 source venv/bin/activate
 pip3 install -r requirements.txt
 
