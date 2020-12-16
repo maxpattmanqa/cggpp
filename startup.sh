@@ -24,8 +24,8 @@ sudo apt-get install python3-venv
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-sudo mkdir /opt/cggpp
-sudo chown -R jenkins /opt/cggpp
+
+sudo chown -R jenkins /opt/jenkins
 sudo systemctl daemon-reload
 sudo systemctl stop cggpp.service
 sudo systemctl start cggpp.service
