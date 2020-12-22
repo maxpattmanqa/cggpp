@@ -4,5 +4,26 @@
 
 
 
+<table>
+
+<tr>
+    <th> model </th>
+    <th> effect </th>
+    <th> year_intro </th>
+    <th> series </th>
+<tr>
+{% for pedal in pedals  %}
+   <tr> 
+       
+    <td> {{pedal.model}}</td>
+     <td> {{pedal.effect}}</td>
+      <td> {{pedal.year_intro}} </td>
+       <td> {{pedal.series}}</td>
+        
+   <tr/>
+  
+{% endfor %}
+</table>
+
 
 {% endblock %}

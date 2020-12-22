@@ -15,10 +15,15 @@ app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 
 #set up database 
 db = SQLAlchemy(app)
-db.drop_all()
+#db.drop_all()
+
+
+#create global access to session object 
+
 
 #classes 
 class Pedal(db.Model):
+    __tablename__='pedal'
     id = db.Column(db.Integer, primary_key=True)
     model = db.Column(db.String(300),nullable=False)
     effect = db.Column(db.String(3000), nullable = True)
@@ -26,17 +31,13 @@ class Pedal(db.Model):
     series = db.Column(db.String(300), nullable= True)
 
     def __repr__(self):
-        return f"Pedal : ('{self.model}','{self.effect}','{self.year_intro}','{self.series}')"
-
-
-
+        return f"<'{self.model}','{self.effect}','{self.year_intro}','{self.series}'>"
 
 
 #convert csv into transferable form 
 data = pd.read_csv('application/database.csv')
 df = pd.DataFrame(data, columns = ['model','effect','year_intro','series'])
 df = df.fillna('')
-print(df)
 
 
 db.drop_all()

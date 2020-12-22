@@ -1,6 +1,12 @@
-from application import app, db
+from application import app, db, Pedal
 
 from flask import render_template, request, redirect, url_for
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker()
+Session.configure(bind=db)
+
+session = Session()
+
 
 @app.route("/")
 @app.route("/home")
@@ -10,10 +16,19 @@ def view_home():  return render_template('home.html')
 def view_kytopia(): return render_template('kytopia.html')
 
 @app.route("/pedalgallery")
-def view_pedalgallery(): return render_template('pedalgallery.html')
+def view_pedalgallery():
+    headings = get_pedals_headings()
+
+    pedals = get_pedals_table()
+    return render_template('pedalgallery.html',pedals=pedals,headings=headings)
 
 
+def get_pedals_table():
+    return Pedal.query.all()
 
+def get_pedals_headings():
+    return Pedal.metadata
+    
 
 # #   form = TaskForm()
 # #     if request.method == "POST":
@@ -59,3 +74,6 @@ def view_pedalgallery(): return render_template('pedalgallery.html')
 # @app.route("/layout")
 # def layout():
 #     return render_template("layout.html")
+
+
+#this function queries our database and returns the values 
