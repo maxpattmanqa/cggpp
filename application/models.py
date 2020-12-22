@@ -1,8 +1,16 @@
-from application import db
-from datetime import datetime
+# from application import db
+# from datetime import datetime
 
-# class Tasks(db.Model):
+
+# class Pedal(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
-#     description = db.Column(db.String(50), nullable=False)
-#     completed = db.Column(db.Boolean, nullable=False, default=False)
-#     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+#     model = db.Column(db.String(25),nullable=False)
+#     effect = db.Column(db.Sting(25), nullable = False)
+#     year_intro = db.Column(db.String(25))
+#     series = db.Column(db.string(25))
+
+#     def __repr__(self):
+#         return f"Pedal : ('{self.model}','{self.effect}','{self.year_intro}','{self.series}')"
+            
+        
+

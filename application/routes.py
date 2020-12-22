@@ -1,20 +1,23 @@
 from application import app, db
-#from application.models import Tasks
-#from application.forms import TaskForm
+
 from flask import render_template, request, redirect, url_for
 
 @app.route("/")
-def home():  return render_template('base.html')
-    #all_tasks = Tasks.query.all()
-   # output = ""
- 
-    # render_template("index.html", title="Home", all_tasks=all_tasks)
+@app.route("/home")
+def view_home():  return render_template('home.html')
 
-# @app.route("/create", methods=["GET","POST"])
-# def create():
-#     form = TaskForm()
-#     if request.method == "POST":
-#         if form.validate_on_submit():
+@app.route("/kytopia")
+def view_kytopia(): return render_template('kytopia.html')
+
+@app.route("/pedalgallery")
+def view_pedalgallery(): return render_template('pedalgallery.html')
+
+
+
+
+# #   form = TaskForm()
+# #     if request.method == "POST":
+# #         if form.validate_on_submit():
 #             new_task = Tasks(description=form.description.data)
 #             db.session.add(new_task)
 #             db.session.commit()
