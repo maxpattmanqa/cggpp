@@ -1,4 +1,4 @@
-from application import app, db, Pedal
+from application import app, db, Pedal, PedalForm
 
 from flask import render_template, request, redirect, url_for
 from sqlalchemy.orm import sessionmaker
@@ -15,19 +15,33 @@ def view_home():  return render_template('home.html')
 @app.route("/kytopia")
 def view_kytopia(): return render_template('kytopia.html')
 
+@app.route("/pedalgalleryeditor",methods=['GET','POST'])
+def view_pedalgalleryeditor(): 
+    error = ""
+    form  = PedalForm()
+
+    if request.method =='POST':
+        model = form.model.data
+        effect = form.effect.data
+        year_intro = form.year_intro.data
+        series = form.series.data
+
+    return render_template('pedalgalleryeditor.html',form=form,message=error)
+
+
 @app.route("/pedalgallery")
 def view_pedalgallery():
-    headings = get_pedals_headings()
-
     pedals = get_pedals_table()
-    return render_template('pedalgallery.html',pedals=pedals,headings=headings)
+    return render_template('pedalgallery.html',pedals=pedals)
 
 
 def get_pedals_table():
     return Pedal.query.all()
 
-def get_pedals_headings():
-    return Pedal.metadata
+def insert_pedal_entry(model,effect,year_intro,series):
+    new_entry = Pedal(model=model,effect=effect,year_intro=year_intro,series=series)
+    db.session.add(new_entry)
+    db.session.commit()
     
 
 # #   form = TaskForm()

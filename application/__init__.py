@@ -4,6 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from os import getenv
 import pandas as pd 
 
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+
+
 
 #create application 
 
@@ -19,6 +23,16 @@ db = SQLAlchemy(app)
 
 
 #create global access to session object 
+
+#create a pedal flask form 
+
+class PedalForm(FlaskForm):
+    model = StringField('Model Name')
+    effect = StringField('Effect Type')
+    year_intro = StringField('Year Introduced')
+    series = StringField('Series')
+
+
 
 
 #classes 

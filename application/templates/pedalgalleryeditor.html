@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body %}
+<p> This is the pedal gallery editor for the rest of the crud operations</p>
+
+
+ <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.model.label }} {{ form.model }}
+                <br>
+                {{ form.effect.label }} {{ form.effect }}
+                <br>
+                {{ form.year_intro.label }} {{ form.year_intro }}
+                <br>
+                {{ form.series.label }} {{ form.series}}
+                <br>
+
+                {{ form.submit }}
+            {{ message }}
+
+{% endblock %}
