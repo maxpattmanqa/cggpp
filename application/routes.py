@@ -20,7 +20,7 @@ def view_pedalgalleryeditor():
     error = ""
     form  = PedalForm()
 
-    if request.method =='POST':
+    if (request.method =='POST')and(form.validate_on_submit()):
         model = form.model.data
         effect = form.effect.data
         year_intro = form.year_intro.data

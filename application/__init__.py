@@ -6,6 +6,7 @@ import pandas as pd
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 
 
@@ -27,10 +28,11 @@ db = SQLAlchemy(app)
 #create a pedal flask form 
 
 class PedalForm(FlaskForm):
-    model = StringField('Model Name')
-    effect = StringField('Effect Type')
-    year_intro = StringField('Year Introduced')
-    series = StringField('Series')
+    model = StringField('Model Name', validators=[DataRequired()])
+    effect = StringField('Effect Type',validators=[DataRequired()])
+    year_intro = StringField('Year Introduced',validators=[DataRequired()])
+    series = StringField('Series',validators=[DataRequired()])
+    submit = SubmitField('Submit Entry')
 
 
 
