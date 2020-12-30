@@ -2,10 +2,12 @@ from application import app, db, Pedal, PedalForm
 
 from flask import render_template, request, redirect, url_for
 from sqlalchemy.orm import sessionmaker
+
 Session = sessionmaker()
 Session.configure(bind=db)
 
 session = Session()
+
 
 
 @app.route("/")
@@ -19,12 +21,14 @@ def view_kytopia(): return render_template('kytopia.html')
 def view_pedalgalleryeditor(): 
     error = ""
     form  = PedalForm()
+    
 
     if (request.method =='POST')and(form.validate_on_submit()):
         model = form.model.data
         effect = form.effect.data
         year_intro = form.year_intro.data
         series = form.series.data
+
 
     return render_template('pedalgalleryeditor.html',form=form,message=error)
 
@@ -42,6 +46,9 @@ def insert_pedal_entry(model,effect,year_intro,series):
     new_entry = Pedal(model=model,effect=effect,year_intro=year_intro,series=series)
     db.session.add(new_entry)
     db.session.commit()
+
+def get_pedals_entry(model):
+    return Pedal.query.filter_by(model=model).first()
     
 
 # #   form = TaskForm()
