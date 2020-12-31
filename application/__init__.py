@@ -67,7 +67,4 @@ for _,row in df.iterrows():
     db.session.commit()
 
 
-
-
-
 from application import routes

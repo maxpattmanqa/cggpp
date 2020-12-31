@@ -40,16 +40,55 @@ def view_pedalgallery():
 
 
 def get_pedals_table():
+    print(Pedal.query.all())
     return Pedal.query.all()
+
+#crud helper operations 
 
 def insert_pedal_entry(model,effect,year_intro,series):
     new_entry = Pedal(model=model,effect=effect,year_intro=year_intro,series=series)
     db.session.add(new_entry)
     db.session.commit()
 
-def get_pedals_entry(model):
+def get_pedal_entry(model):
     return Pedal.query.filter_by(model=model).first()
+
+def delete_pedal_entry(model):
+    #query the db first to get the correct mapping 
+    entry = Pedal.query.filter_by(model=model).first()
+    db.session.delete(entry)
+    db.session.commit()
+    print('Entry:' + str(entry.model) + '-' + str(entry.effect) + '-' + str(entry.year_intro) + '-' + str(entry.series) + '\n' 
+            + "( HAS BEEN DELETED)")
+
+def update_pedal_entry_model(model,new_model):
+    Pedal.update()
     
+
+
+def update_pedal_entry_effect(model,new_effect):
+    Pedal.update()
+
+def update_pedal_entry_year_intro(model,new_year_intro):
+    Pedal.update()
+
+def update_pedal_entry_series(model,new_series):
+    Pedal.update()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # #   form = TaskForm()
 # #     if request.method == "POST":
@@ -98,3 +137,4 @@ def get_pedals_entry(model):
 
 
 #this function queries our database and returns the values 
+#
