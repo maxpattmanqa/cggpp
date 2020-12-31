@@ -61,19 +61,29 @@ def delete_pedal_entry(model):
     print('Entry:' + str(entry.model) + '-' + str(entry.effect) + '-' + str(entry.year_intro) + '-' + str(entry.series) + '\n' 
             + "( HAS BEEN DELETED)")
 
-def update_pedal_entry_model(model,new_model):
-    Pedal.update()
-    
-
-
+def update_pedal_entry_model(modelname,new_model):
+    update = Pedal.query.filter_by(model=modelname).first()
+    update.model = new_model
+    print(new_model)
+    db.session.commit()
+   
 def update_pedal_entry_effect(model,new_effect):
-    Pedal.update()
+    update = Pedal.query.filter_by(model=model).first()
+    update.effect = new_effect
+    print(new_effect)
+    db.session.commit()
 
 def update_pedal_entry_year_intro(model,new_year_intro):
-    Pedal.update()
+    update = Pedal.query.filter_by(model=model).first()
+    update.year_intro = new_year_intro
+    print(new_year_intro)
+    db.session.commit()
 
 def update_pedal_entry_series(model,new_series):
-    Pedal.update()
+    update = Pedal.query.filter_by(model=model).first()
+    update.series = new_series
+    print(new_series)
+    db.session.commit()
 
 
 
