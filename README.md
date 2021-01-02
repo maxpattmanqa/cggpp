@@ -33,15 +33,15 @@ My Godfather is also a member of a band called Kytopia who i am currently mixing
 
 This Web application does not require a complex relational database Structure and could have been implemented with a different kind of database. for examinations sake i have included a bandmembers table although this will likely be removed after the examination of the project for future development. 
 
-            _________________________________           _________________________________               
-			|         **pedal**              |         |         **bandmember**          |
-			|________________________________|         |_________________________________|
-			|PK	|id 		int 	 NOT NULL|\        |  | first_name Varchar() NOT NULL|
-			|	|model Varchar() 	 NOT NULL| \       |  | second_name Varchar()NOT NULL| 
-			|	|effect Varchar()	 NOT NULL|  \-||-> |FK| model_id int         NOT NULL|
-			|	|year_intro varchar()NOT NULL|         |_________________________________|
-			|	|series Varchar() 	 NOT NULL|			
-			|___|____________________________|
+      _________________________________           _________________________________               
+	|         **pedal**              |         |         **bandmember**          |
+    |________________________________|         |_________________________________|
+	|PK	|id 		int 	 NOT NULL|\        |  | first_name Varchar() NOT NULL|
+	|	|model Varchar() 	 NOT NULL| \       |  | second_name Varchar()NOT NULL| 
+	|	|effect Varchar()	 NOT NULL|  \-||-> |FK| model_id int         NOT NULL|
+	|	|year_intro varchar()NOT NULL|         |_________________________________|
+	|	|series Varchar() 	 NOT NULL|			
+	|___|____________________________|
    
 
 
