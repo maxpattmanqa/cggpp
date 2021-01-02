@@ -47,6 +47,8 @@ This Web application does not require a complex relational database Structure an
 
 ## CI PipeLine
 
+Github it seems does not support mermaid -_- will have to come back to this later
+
 ```mermaid
 graph TD
 A[Local Machine] -- SSH CONNECTION--> B[CGGPP Development Server]
