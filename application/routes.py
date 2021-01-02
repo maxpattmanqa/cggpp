@@ -1,4 +1,5 @@
-from application import app, db, Pedal, PedalForm
+from application import app, db, Pedal
+from application.forms import InsertPedalForm , DeletePedalForm, UpdatePedalForm
 
 from flask import render_template, request, redirect, url_for
 from sqlalchemy.orm import sessionmaker
@@ -17,20 +18,71 @@ def view_home():  return render_template('home.html')
 @app.route("/kytopia")
 def view_kytopia(): return render_template('kytopia.html')
 
+# @app.route("/pedalgalleryeditor")
+# def view_pedalgalleryeditor():
+#     insert_form = InsertPedalForm()
+#     update_form = UpdatePedalForm()
+#     delete_form = DeletePedalForm()
+#     return render_template('pedalgalleryeditor.html',insert_form=insert_form,update_form=update_form,delete_form=delete_form)
+
+# @app.route("/pedalgalleryeditor_insert",methods=['GET','POST'])
+# def view_pedalgalleryeditor_insert():
+#     insert_form = InsertPedalForm()
+#     update_form = UpdatePedalForm()
+#     delete_form = DeletePedalForm()
+
+
+
+# @app.route("/pedalgalleryeditor_update",methods=['GET','POST'])
+# def view_pedalgalleryeditor_update(): 
+
+# @app.route("/pedalgalleryeditor_delete",methods=['GET','POST'])
+# def view_pedalgalleryeditor_delete(): 
+
 @app.route("/pedalgalleryeditor",methods=['GET','POST'])
 def view_pedalgalleryeditor(): 
     error = ""
-    form  = PedalForm()
+    insert_form  = InsertPedalForm()
+    update_form = UpdatePedalForm()
+    delete_form = DeletePedalForm()
     
+    if (request.method =='POST')and(insert_form.validate_on_submit()):
+        model = insert_form.model.data
+        effect = insert_form.effect.data
+        year_intro = insert_form.year_intro.data
+        series = insert_form.series.data
+        insert_pedal_entry(model=model,effect=effect,year_intro=year_intro,series=series)
+       # return render_template('pedalgalleryeditor.html',insert_form=insert_form)
 
-    if (request.method =='POST')and(form.validate_on_submit()):
-        model = form.model.data
-        effect = form.effect.data
-        year_intro = form.year_intro.data
-        series = form.series.data
+    if (request.method == 'Post') and (update_form.validate_on_submit()):
+        modelname = update_form.modelname.data
+        model = update_form.model.data
+        effect = update_form.effect.data
+        year_intro = update_form.year_intro.data
+        series = update_form.series.data
+        #this is clunky 
+        if(model != ''):
+            update_pedal_entry_model(str(modelname,model))
+        if(effect != ''):
+            update_pedal_entry_effect(str(modelname,effect))
+        if(year_intro != ''):
+            update_pedal_entry_year_intro(str(modelname,year_intro))
+        if(series != ''):
+            update_pedal_entry_series(str(modelname,series))
+        
+        #return render_template('pedalgalleryeditor.html',update_form=update_form)
+    
+    if (request.method == 'Post') and (delete_form.validate_on_submit()):
+        delete_pedal_entry(str(delete_form.model.data))
+       # return render_template('pedalgalleryeditor.html', delete_form=delete_form)
 
 
-    return render_template('pedalgalleryeditor.html',form=form,message=error)
+    return render_template('pedalgalleryeditor.html',insert_form=insert_form,update_form=update_form,delete_form=delete_form,message=error)
+
+
+
+
+
 
 
 @app.route("/pedalgallery")

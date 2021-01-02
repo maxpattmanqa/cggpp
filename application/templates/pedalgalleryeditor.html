@@ -2,21 +2,50 @@
 {% block body %}
 <p> This is the pedal gallery editor for the rest of the crud operations</p>
 
+<h2>Insert a new entry</h2>
+ <form method='POST' action=>
+                {{ insert_form.hidden_tag() }}
+                {{ insert_form.model.label }} {{ insert_form.model }}
+                <br>
+                {{ insert_form.effect.label }} {{ insert_form.effect }}
+                <br>
+                {{ insert_form.year_intro.label }} {{ insert_form.year_intro }}
+                <br>
+                {{ insert_form.series.label }} {{ insert_form.series}}
+                <br>
 
- <form method='POST' action=''>
-                {{ form.hidden_tag() }}
-                {{ form.model.label }} {{ form.model }}
-                <br>
-                {{ form.effect.label }} {{ form.effect }}
-                <br>
-                {{ form.year_intro.label }} {{ form.year_intro }}
-                <br>
-                {{ form.series.label }} {{ form.series}}
-                <br>
-
-                {{ form.submit }}
+                {{ insert_form.submit1 }}
             {{ message }}
 
+</form>
+
+<h2> Update an existing entry </h2>
+<form method = 'POST' action= >
+    {{ update_form.hidden_tag() }}
+    {{ update_form.modelname.label }} {{ update_form.modelname }}
+    <br>
+    {{ update_form.model.label }} {{ update_form.model }}
+    <br>
+    {{ update_form.effect.label }} {{ update_form.effect }}
+    <br>
+    {{ update_form.year_intro.label }} {{ update_form.year_intro }}
+    <br>
+    {{ update_form.series.label }} {{ update_form.series}}
+    <br>
+
+    {{ update_form.submit2 }}
+{{ message }}
+</form>
+
+<h2> Delete an Entry </h2>
+<form method = 'POST' action=>
+    {{ delete_form.hidden_tag() }}
+    <br>
+    {{ delete_form.model.label }} {{ delete_form.model }}
+    <br>
+    {{ delete_form.submit3 }}
+{{ message }}
+    <br>
 </form>
 
 {% endblock %}
