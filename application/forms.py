@@ -22,4 +22,7 @@ class DeletePedalForm(FlaskForm):
     submit3 = SubmitField('Submit Entry')
 
 
-
+class BandmemberForm(FlaskForm):
+    first_name= StringField('first_name', validators=[DataRequired()])
+    second_name= StringField('second_name',validators=[DataRequired()])
+    submit = SubmitField('Submit Entry')

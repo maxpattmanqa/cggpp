@@ -2,4 +2,20 @@
 
 {% block body %}
 this is the kytopia landing page
+
+
+
+<table>
+    <tr>
+        <th> first name </th>
+        <th> second name </th>
+    <tr>
+    {% for bandmember in bandmembers  %}
+       <tr> 
+        <td> {{bandmember.first_name}}</td>
+         <td> {{bandmember.second_name}}</td>
+       <tr/>
+    {% endfor %}
+    </table>
+    
 {% endblock  %}
