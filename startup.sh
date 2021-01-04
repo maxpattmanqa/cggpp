@@ -33,5 +33,8 @@ pip3 install -r requirements.txt
 
 sudo chown -R jenkins /opt/jenkins
 sudo systemctl daemon-reload
+echo "systemctl daemon-reloaded"
 sudo systemctl stop cggpp.service
+echo "systemctl cggp.service stopped"
 sudo systemctl start cggpp.service
+echo "systemctl cggp.service has started"
