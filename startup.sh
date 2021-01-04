@@ -29,7 +29,7 @@ sudo chown -R jenkins /opt/jenkins
 source venv/bin/activate
 pip3 install -r requirements.txt
 #python3 /opt/jenkins/cggpp-project/app.py
-#pytest -v /opt/jenkins/cggpp-project/
+pytest -v /opt/jenkins/cggpp-project/
 
 sudo chown -R jenkins /opt/jenkins
 sudo systemctl daemon-reload
