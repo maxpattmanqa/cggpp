@@ -28,6 +28,7 @@ sudo cp -r $WORKSPACE /opt/jenkins
 sudo chown -R jenkins /opt/jenkins
 source venv/bin/activate
 pip3 install -r requirements.txt
+pytest --cov
 
 sudo chown -R jenkins /opt/jenkins
 sudo systemctl daemon-reload
