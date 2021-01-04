@@ -29,29 +29,30 @@ class BandmemberForm(FlaskForm):
 
 #bandmember csv
 banddata= pd.read_csv('application/csv_data/bandmember.csv')
-df1 = pd.DataFrame(banddata, columns=['first_name','second_name','fav_pedal_id'])
-df1 = df1.fillna('')
+df2 = pd.DataFrame(banddata, columns=['first_name','second_name','fav_pedal_id'])
+df2 = df2.fillna('')
 
 #convert csv into transferable form 
 data = pd.read_csv('application/csv_data/database.csv')
-df2 = pd.DataFrame(data, columns = ['model','effect','year_intro','series'])
-df2 = df2.fillna('')
+df1 = pd.DataFrame(data, columns = ['model','effect','year_intro','series'])
+df1 = df1.fillna('')
 
 
 db.drop_all()
 db.create_all()
 #add all entries into database 
 
+def populate_database():
+    for _,row in df1.iterrows():
+        entry = Pedal(model=row['model'],effect=row['effect'],year_intro=row['year_intro'],series=row['series'])
+        db.session.add(entry) 
+        db.session.commit()
+    for _,row in df2.iterrows():
+        entry = Bandmember(first_name=row['first_name'],second_name=row['second_name'],fav_pedal_id=row['fav_pedal_id'])
+        db.session.add(entry) 
+        db.session.commit()
 
-for _,row in df2.iterrows():
-    entry = Pedal(model=row['model'],effect=row['effect'],year_intro=row['year_intro'],series=row['series'])
-    
-    db.session.add(entry) 
-    db.session.commit()
+populate_database()
 
-for _,row in df1.iterrows():
-    entry = Bandmember(first_name=row['first_name'],second_name=row['second_name'],fav_pedal_id=row['fav_pedal_id'])
-    db.session.add(entry) 
-    db.session.commit()
 
 from application import routes
