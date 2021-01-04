@@ -21,14 +21,6 @@ class TestBase(TestCase):
         db.create_all()
         populate_database()
 
-
-    # # Will be called after every test 
-    # def tearDown(self):
-
-
-
-#test Read function 
-
 class TestCRUD(TestBase):
 
     def test_read_pedal_entry(self):
@@ -131,7 +123,6 @@ class TestCRUD(TestBase):
     #comfirm deletion
         entry_exists = bool(db.session.query(Pedal).filter_by(model='test_model').first())
         assert(entry_exists== False)
-
 
     def test_update_pedal_entry_series(self):
         model = "test_model"
