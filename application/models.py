@@ -10,7 +10,8 @@ class Pedal(db.Model):
     effect = db.Column(db.String(3000), nullable = True)
     year_intro = db.Column(db.String(300), nullable= True)
     series = db.Column(db.String(300), nullable= True)
-    bandmember_id =db.Column(db.Integer,db.ForeignKey('bandmember.id'))
+    bandmember= db.relationship('Bandmember',backref='pedal')
+    
     def __repr__(self):
         return f"<'{self.model}','{self.effect}','{self.year_intro}','{self.series}'>"
 
@@ -19,6 +20,7 @@ class Bandmember(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name =db.Column(db.String(300),nullable=False)
     second_name = db.Column(db.String(300),nullable=False)
-    pedal_model= db.relationship('Pedal',backref='bandmember')
+    fav_pedal_id =db.Column(db.Integer,db.ForeignKey('pedal.id'), nullable=False)
+    fav_pedal =db.relationship('Pedal')
     def __repr__(self):
         return f"<'{self.first_name}','{self.second_name}'>"

@@ -9,12 +9,14 @@ this is the kytopia landing page
     <tr>
         <th> first name </th>
         <th> second name </th>
+        <th> Favourite Pedal </th>>
     <tr>
     {% for bandmember in bandmembers  %}
        <tr> 
         <td> {{bandmember.first_name}}</td>
          <td> {{bandmember.second_name}}</td>
-       <tr/>
+         <td> {{bandmember.fav_pedal.model}}</td>
+       </tr>
     {% endfor %}
     </table>
     
