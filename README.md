@@ -15,7 +15,7 @@ My Godfather is also a member of a band called Kytopia who i am currently mixing
 
  -  Approach 
 
-- Architecture 
+
 - Database Structure
 - CI Pipeline 
 - Project Tracking
@@ -25,6 +25,41 @@ My Godfather is also a member of a band called Kytopia who i am currently mixing
 - Known Issues
 - Future Improvements
 - Authors
+
+
+## Brief 
+
+- To create a CRUD application with utilisation of supporting tools,
+methodologies and technologies that encapsulate all core modules
+covered during training.
+
+Additionally I am also required to include the following 
+- A Trello Board 
+- A relational database 
+- clear documentation of the design phase , app architechture and risk assessment 
+- Test Suites for the application with sufficient coverage
+
+
+## Approach
+
+- In order to acheive this , I have tried to produce a project in-line with the brief and also inline with a project idea i had for my godfather. He collects vintage guitar pedals and has a lovely collection , this project is to act as a prototype for a web application that will allow him to edit and upload information and images about his collection to the website. For this the website must do the following . 
+
+- Create new guitar pedal entries into the collection and have them displayed to the public pages (satisfies Create and Read requirements ) 
+	: the information for the guitar pedals include 
+	- The name of the Model
+	- The type of effect the pedal creates 
+	- the year it was introduced into the market 
+	- the series of releases that it was a part of 
+
+- Delete Pedal Entries from the collection (Satisfies Delete requirements )
+	- The Pedal collection is changes over time as He also sells pedals in order to bring others in 
+
+- Update Pedal Entries From the collection (Satisfies Update requirements)
+	- information about the pedals is often lost , user manuals are a rarity so when new information 
+	comes into his possession he is able to update information on the pedals 
+
+
+
 
 ## Database Structure
 
@@ -85,3 +120,4 @@ The Front end design is plain HTML Text to demonstrate the functionality that ha
 ## Future Improvements
 
 - I will be redoing this project on the side using Golang as it is a tool that i am more comfortable with , This will also show QA that i can do these projects in languages other than python. 
+- an admin login system will be added , this will require a redraft of the risk assessment 
